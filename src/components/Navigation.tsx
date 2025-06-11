@@ -11,6 +11,7 @@ import {
   Users, 
   Bell, 
   Settings, 
+  Shield,
   Menu, 
   X
 } from 'lucide-react';
@@ -129,6 +130,14 @@ const Navigation = () => {
                 <span className="text-xs text-uniconecta-dark">Notificações</span>
               </Link>
               <Link 
+                to="/admin" 
+                onClick={toggleMobileMenu}
+                className="flex flex-col items-center justify-center p-3 rounded-lg bg-uniconecta-light/50 text-center"
+              >
+                <Shield className="h-6 w-6 mb-2 text-uniconecta-secondary" />
+                <span className="text-xs text-uniconecta-dark">Administração</span>
+              </Link>
+              <Link 
                 to="/profile" 
                 onClick={toggleMobileMenu}
                 className="flex flex-col items-center justify-center p-3 rounded-lg bg-uniconecta-light/50 text-center"
@@ -182,6 +191,22 @@ const Navigation = () => {
             >
               <Bell className="h-5 w-5 mr-3 text-uniconecta-neutral" />
               Notificações
+            </Link>
+            <Link
+              to="/admin"
+              className={cn(
+                "flex items-center px-4 py-3 text-sm font-medium rounded-lg",
+                location.pathname === '/admin'
+                  ? "bg-uniconecta-soft text-uniconecta-primary"
+                  : "text-uniconecta-neutral hover:bg-uniconecta-light hover:text-uniconecta-secondary"
+              )}
+            >
+              <Shield className={cn("h-5 w-5 mr-3", 
+                location.pathname === '/admin'
+                  ? "text-uniconecta-primary"
+                  : "text-uniconecta-neutral"
+              )} />
+              Administração
             </Link>
             <Link
               to="/profile"
