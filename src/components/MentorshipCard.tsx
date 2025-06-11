@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface MentorshipCardProps {
   mentor: {
@@ -34,9 +35,12 @@ const MentorshipCard = ({ mentor }: MentorshipCardProps) => {
         </p>
         
         <div className="flex space-x-2">
-          <button className="uniconecta-btn-outline flex-1 text-sm py-1.5 flex items-center justify-center">
+          <Link 
+            to={`/mentor/${mentor.id}`}
+            className="uniconecta-btn-outline flex-1 text-sm py-1.5 flex items-center justify-center"
+          >
             Ver perfil
-          </button>
+          </Link>
           <button className="uniconecta-btn-primary flex-1 text-sm py-1.5 flex items-center justify-center">
             <MessageCircle className="h-4 w-4 mr-1" />
             Conversar

@@ -12,6 +12,10 @@ import Schedule from "./pages/Schedule";
 import Regulations from "./pages/Regulations";
 import AcademicHelp from "./pages/AcademicHelp";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import Notifications from "./pages/Notifications";
+import Admin from "./pages/Admin";
+import MentorProfile from "./pages/MentorProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,11 +30,15 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/scholarships" element={<Scholarships />} />
           <Route path="/mentorship" element={<Mentorship />} />
+          <Route path="/mentor/:id" element={<MentorProfile />} />
           <Route path="/map" element={<CampusMap />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/regulations" element={<Regulations />} />
           <Route path="/academic-help" element={<AcademicHelp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

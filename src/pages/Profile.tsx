@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import { User, Mail, Phone, BookOpen, MessageSquare, Bell, Settings, Calendar, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   // Example user data
@@ -90,10 +91,10 @@ const Profile = () => {
               </div>
               
               <div className="mt-4 md:mt-0 md:ml-6">
-                <button className="uniconecta-btn-outline">
+                <Link to="/edit-profile" className="uniconecta-btn-outline">
                   <Settings className="h-4 w-4 mr-2" />
                   Editar Perfil
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -190,3 +191,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+</edits_to_apply>
