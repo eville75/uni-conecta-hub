@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import { User, Mail, Phone, BookOpen, MessageSquare, Bell, Settings, Calendar, Award } from 'lucide-react';
@@ -191,5 +192,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-</edits_to_apply>

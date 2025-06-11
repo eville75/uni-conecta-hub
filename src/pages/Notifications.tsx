@@ -50,7 +50,7 @@ const Notifications = () => {
       read: true,
       icon: Bell
     }
-  ];
+  ]);
 
   const markAsRead = (id: number) => {
     setNotifications(prev => 
