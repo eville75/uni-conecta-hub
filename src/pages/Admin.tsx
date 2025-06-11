@@ -1,11 +1,17 @@
-
 import React, { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { Users, Calendar, Award, BookOpen, Plus, Edit, Trash2, Search } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import MentorForm from '@/components/forms/MentorForm';
+import SubjectForm from '@/components/forms/SubjectForm';
+import ScholarshipForm from '@/components/forms/ScholarshipForm';
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState('mentors');
   const [searchQuery, setSearchQuery] = useState('');
+  const [mentorDialogOpen, setMentorDialogOpen] = useState(false);
+  const [subjectDialogOpen, setSubjectDialogOpen] = useState(false);
+  const [scholarshipDialogOpen, setScholarshipDialogOpen] = useState(false);
 
   // Example data
   const [mentors, setMentors] = useState([
@@ -73,14 +79,42 @@ const Admin = () => {
     { id: 'scholarships', label: 'Bolsas', icon: Award }
   ];
 
+  const handleMentorSubmit = (data: any) => {
+    console.log('Mentor data:', data);
+    setMentorDialogOpen(false);
+    // Here you would typically save the data
+  };
+
+  const handleSubjectSubmit = (data: any) => {
+    console.log('Subject data:', data);
+    setSubjectDialogOpen(false);
+    // Here you would typically save the data
+  };
+
+  const handleScholarshipSubmit = (data: any) => {
+    console.log('Scholarship data:', data);
+    setScholarshipDialogOpen(false);
+    // Here you would typically save the data
+  };
+
   const renderMentorsTab = () => (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-uniconecta-dark">Gerenciar Mentores</h3>
-        <button className="uniconecta-btn-primary">
-          <Plus className="h-4 w-4 mr-2" />
-          Adicionar Mentor
-        </button>
+        <Dialog open={mentorDialogOpen} onOpenChange={setMentorDialogOpen}>
+          <DialogTrigger asChild>
+            <button className="uniconecta-btn-primary">
+              <Plus className="h-4 w-4 mr-2" />
+              Adicionar Mentor
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <MentorForm 
+              onSubmit={handleMentorSubmit}
+              onCancel={() => setMentorDialogOpen(false)}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
       
       <div className="overflow-hidden bg-white rounded-xl shadow-sm">
@@ -142,10 +176,20 @@ const Admin = () => {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-uniconecta-dark">Gerenciar Disciplinas</h3>
-        <button className="uniconecta-btn-primary">
-          <Plus className="h-4 w-4 mr-2" />
-          Adicionar Disciplina
-        </button>
+        <Dialog open={subjectDialogOpen} onOpenChange={setSubjectDialogOpen}>
+          <DialogTrigger asChild>
+            <button className="uniconecta-btn-primary">
+              <Plus className="h-4 w-4 mr-2" />
+              Adicionar Disciplina
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <SubjectForm 
+              onSubmit={handleSubjectSubmit}
+              onCancel={() => setSubjectDialogOpen(false)}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
       
       <div className="overflow-hidden bg-white rounded-xl shadow-sm">
@@ -207,10 +251,20 @@ const Admin = () => {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-uniconecta-dark">Gerenciar Bolsas e Auxílios</h3>
-        <button className="uniconecta-btn-primary">
-          <Plus className="h-4 w-4 mr-2" />
-          Adicionar Bolsa
-        </button>
+        <Dialog open={scholarshipDialogOpen} onOpenChange={setScholarshipDialogOpen}>
+          <DialogTrigger asChild>
+            <button className="uniconecta-btn-primary">
+              <Plus className="h-4 w-4 mr-2" />
+              Adicionar Bolsa
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <ScholarshipForm 
+              onSubmit={handleScholarshipSubmit}
+              onCancel={() => setScholarshipDialogOpen(false)}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
